@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Sales Report</title>
+</head>
+
+<body>
+
+    <h1>ShopTracker Pos</h1>
+    <h2>Daily Sales Report</h2>
+
+    <p>strong>Date:<?strong> {{ report_date}}</p>
+    {% if sales %}
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Sale ID</th>
+            <th>User ID</th>
+            <th>Total Amount</th>
+            <th>Sale Date</th>
+        </tr>
+
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale.sale_id }}</td>
+            <td>{{ sale.user_id }}</td>
+            <td>R{{ "%.2f"|format (sale.total_amount) }}</td>
+            <td>{{ sale.sale_date }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <h3>Total Sales: R{{ "%.2f"|format(toatl_sales)}}</h3>
+
+    {% else %}
+
+    <p>No sales have been recorded today.</p>
+
+    {% endif %}
+p    
+</body> 
+
